@@ -18,20 +18,19 @@ class Form(StatesGroup):
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     kb = [
-        types.KeyboardButton(text="Select collection 🥽"),
-        types.KeyboardButton(text="Edit collections 💾"),
-        types.KeyboardButton(text="New collection 🖍"),
+        [types.KeyboardButton(text="Select collection 🥽")],
+        [types.KeyboardButton(text="Edit collections 💾")],
+        [types.KeyboardButton(text="New collection 🖍")],
         [
-            types.KeyboardButton(text="Check health 🛠"),
-            types.KeyboardButton(text="Clear chat 🧹")
-        ] 
+            [types.KeyboardButton(text="Check health 🛠")],
+            [types.KeyboardButton(text="Clear chat 🧹")]
+        ]
     ]
     keyboard = types.ReplyKeyboardMarkup(
         keyboard=kb,
         resize_keyboard=True,
         input_field_placeholder="Push buttons, don't be distracted by the text"
     )
-    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
 
     await message.answer("Sup ma boy. Whaca want today?", reply_markup=keyboard)
 
