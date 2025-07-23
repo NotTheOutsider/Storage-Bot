@@ -4,6 +4,7 @@ from aiogram.enums import ParseMode
 from aiogram.filters import StateFilter
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+from keyboards import inlineKeyboards
 
 router = Router()
 
@@ -13,18 +14,18 @@ class Form(StatesGroup):
 @router.message(F.text.lower() == "new collection 🖍", StateFilter(None))
 async def cmd_create_collection(message: Message, state: FSMContext):
 
-    inline_buttons = [
-        [InlineKeyboardButton(text="⏪ Back", callback_data="go_back")]
-    ]
+    # inline_buttons = [
+    #     [InlineKeyboardButton(text="⏪ Back", callback_data="go_back")]
+    # ]
     
-    inline_keyboard = InlineKeyboardMarkup(
-        inline_keyboard=inline_buttons
-    )
+    # inline_keyboard = InlineKeyboardMarkup(
+    #     inline_keyboard=inline_buttons
+    # )
     
     sent_message = await message.answer(
             'Name for the new collection? Just type it', 
             parse_mode=ParseMode.MARKDOWN_V2,
-            reply_markup=inline_keyboard
+            reply_markup=inlineKeyboards.get_back_keyaboard()
         )
     
     await state.update_data(message_ids_to_delete=[sent_message.message_id, message.message_id])
