@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from aiogram.types import Message, CallbackQuery
 from aiogram.enums import ParseMode
 from aiogram.filters import StateFilter
 from aiogram.fsm.state import State, StatesGroup
@@ -13,14 +13,6 @@ class Form(StatesGroup):
 
 @router.message(F.text.lower() == "new collection 🖍", StateFilter(None))
 async def cmd_create_collection(message: Message, state: FSMContext):
-
-    # inline_buttons = [
-    #     [InlineKeyboardButton(text="⏪ Back", callback_data="go_back")]
-    # ]
-    
-    # inline_keyboard = InlineKeyboardMarkup(
-    #     inline_keyboard=inline_buttons
-    # )
     
     sent_message = await message.answer(
             'Name for the new collection? Just type it', 

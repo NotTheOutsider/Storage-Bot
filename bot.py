@@ -20,22 +20,11 @@ dp.include_routers(
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
-    # kb = [
-    #     [types.KeyboardButton(text="Select collection 🥽")],
-    #     [types.KeyboardButton(text="Edit collections 💾")],
-    #     [types.KeyboardButton(text="New collection 🖍")],
-    #     [
-    #         [types.KeyboardButton(text="Check health 🛠")],
-    #         [types.KeyboardButton(text="Clear chat 🧹")]
-    #     ]
-    # ]
-    # keyboard = types.ReplyKeyboardMarkup(
-    #     keyboard=kb,
-    #     resize_keyboard=True,
-    #     input_field_placeholder="Push buttons, don't be distracted by the text"
-    # )
 
-    await message.answer("Sup ma boy. Whaca want today?", reply_markup=replyKeyboards.get_startup_keyaboard())
+    await message.answer(
+        "Sup ma boy. Whaca want today?", 
+        reply_markup=replyKeyboards.get_startup_keyaboard()
+    )
     
 if __name__ == '__main__':
     print("Starting bot...")
